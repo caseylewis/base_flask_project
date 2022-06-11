@@ -2,6 +2,7 @@
 <html>
 <!--HEAD MUST BE INCLUDED IN EVERY HTML PAGE-->
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Second Page</title>
     <!--THIS IS HOW YOU REFERENCE STYLE SHEETS IN HTML-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -28,7 +29,59 @@
 <!--INCLUDING HEADER.HTML AS HEADER-->
 {% include "header.html" %}
 
-<h1>First Page!!</h1>
+<div class="container">
+    <h1 id="title">First Page!!</h1>
+    <div class="row">
+        <div class="col-6">
+            <button id="ylw_btn" type="button" style="btn btn-primary btn-block" onclick="changeYellow()">Change Yellow!</button>
+        </div>
+        <div class="col-6">
+            <button id="red_btn" type="button" style="btn btn-primary d-flex" onclick="changeRed()">Change Red!</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button id="enable_btn" type="button" style="btn btn-info btn-block" onclick="enable()">Enable</button>
+        </div>
+        <div class="col">
+            <button id="disable_btn" type="submit" style="btn btn-secondary btn-block" onclick="disable()">Disable</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const title = document.getElementById("title");
+const red_btn = document.getElementById("red_btn");
+const ylw_btn = document.getElementById("ylw_btn");
+const enable_btn = document.getElementById("enable_btn");
+const disable_btn = document.getElementById("disable_btn");
+
+function changeYellow() {
+<!--    title.style.color = "red";-->
+    title.style.backgroundColor = "yellow";
+}
+
+function changeRed() {
+<!--    title.style.color = "yellow";-->
+    title.style.backgroundColor = "red";
+}
+
+function enable() {
+    red_btn.disabled = false;
+    ylw_btn.disabled = false;
+    enable_btn.disabled = true;
+    disable_btn.disabled = false;
+}
+
+function disable() {
+    red_btn.disabled = true;
+    ylw_btn.disabled = true;
+    enable_btn.disabled = false;
+    disable_btn.disabled = true;
+}
+
+
+</script>
 
 </body>
 
