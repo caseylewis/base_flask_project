@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+
+  app:
+    image: base_flask_project
+    container_name: app
+    ports:
+      - '5001:5000'
+    restart: always
