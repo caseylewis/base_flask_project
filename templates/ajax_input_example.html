@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--MAIN CONTENT-->
+<div class="container">
+    <!--REGISTER FORM-->
+    <div class="container">
+        <h1>Register User</h1>
+        <div class="col">
+            <form action="" id="register_user_form" method="POST">
+                <!--    NAME-->
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" aria-describedby="name"
+                           placeholder="Enter name">
+                    <!--        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+                <!--    PHONE NUMBER-->
+                <div class="form-group">
+                    <label for="phone_number">Phone Number</label>
+                    <input type="text" class="form-control" name="phone_number" id="phone_number"
+                           placeholder="Phone Number">
+                </div>
+                <button class="btn btn-primary btn-lg btn-block" onclick="submitForm()">Add User</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="user_list">
+    {% include "user_list.html" %}
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+    function submitForm() {
+        $.ajax({
+            type: 'POST',
+            url: "/add_user",
+            data: $("#register_user_form").serialize(),
+            datatype: "json",
+
+            success: function(data) {
+                console.log("success!");
+                $("#user_list").html(data.html);
+            },
+
+            error: function (xhr, errmsg, err) {
+                console.log("error is: " + xhr.status + ": " + xhr.responseText);
+            }
+        });
+    }
+</script>
+{% endblock %}

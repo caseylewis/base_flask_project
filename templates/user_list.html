@@ -1,0 +1,10 @@
+{% for user in user_list %}
+<div class="row">
+    <div class="col">
+        <p style="text-align: center;">{{ user.name }}</p>
+    </div>
+    <div class="col">
+        <p style="text-align: center;">{{ user.phone_number }}</p>
+    </div>
+</div>
+{% endfor %}
