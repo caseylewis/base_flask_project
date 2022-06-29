@@ -7,7 +7,7 @@ from Libs.OSLib.os_helper import *
 app = Flask(__name__)
 
 # APP DATA - TAKEN FROM YAML FILE
-app_config = get_yaml_config(f"{os.getcwd()}\\docker-compose.yml")
+app_config = get_yaml_config(os.path.join(os.getcwd(), "docker-compose.yml"))
 
 # NAME CONSTANTS
 BASE_TITLE = app_config['app_title']
