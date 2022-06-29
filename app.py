@@ -5,9 +5,14 @@ from Libs.OSLib.os_helper import *
 
 # FLASK APP
 app = Flask(__name__)
-# APP DATA
-BASE_TITLE = 'Base Flask Project'
-APP_NAME = 'base_flask_project'  # MAKE SURE THIS IS THE SAME AS IN 'windows_docker_create.cmd'
+
+# APP DATA - TAKEN FROM YAML FILE
+app_config = get_yaml_config(f"{os.getcwd()}\\docker-compose.yml")
+
+# NAME CONSTANTS
+BASE_TITLE = app_config['app_title']
+APP_NAME = app_config['app_name']
+
 app_data = StandardAppDirStruct(os.getcwd(), APP_NAME)
 # JSON
 users_json = JsonManager(os.path.join(app_data.data_dir, 'users.json'))

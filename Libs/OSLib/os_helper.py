@@ -1,6 +1,17 @@
 import os
 import shutil
-import stat
+
+import yaml
+
+
+def get_yaml_config(yaml_filepath):
+    yaml_config = {}
+    with open(yaml_filepath, "r") as stream:
+        try:
+            yaml_config = yaml.safe_load(stream)
+        except yaml.YAMLError as exc:
+            pass
+    return yaml_config
 
 
 # DIRECTORY FUNCTIONS

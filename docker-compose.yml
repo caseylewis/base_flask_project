@@ -1,10 +1,13 @@
 version: '3.7'
 
+app_title: "Base Flask Project"
+app_name: &app_name "base_flask_project"
+
 services:
 
   app:
-    image: base_flask_project
-    container_name: base_flask_project
+    image: *app_name
+    container_name: *app_name
     ports:
       - '5001:5000'
     restart: always
