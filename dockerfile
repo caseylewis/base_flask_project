@@ -3,6 +3,7 @@ FROM python:3.7
 
 # COPY THE REQUIREMENTS FILE INTO THE IMAGE
 COPY ./requirements.txt /requirements.txt
+COPY ./Libs /Libs
 
 # SWITCH WORKING DIRECTORY
 WORKDIR ./

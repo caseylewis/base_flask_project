@@ -1,13 +1,14 @@
 version: '3.7'
 
-app_title: "Base Flask Project"
-app_name: &app_name "base_flask_project"
-
 services:
 
   app:
-    image: *app_name
-    container_name: *app_name
+    # CHANGE [IMAGE, CONTAINER_NAME, VOLUMES, AND PORT] TO MATCH THE PROJECT
+    # ALSO CHANGE FOLDER IN '.dockerignore' TO MATCH VOLUME
+    image: "base_flask_project"
+    container_name: "base_flask_project"
+    volumes:
+      - /data_base_flask_project:/data_base_flask_project:z
     ports:
       - '5001:5000'
     restart: always

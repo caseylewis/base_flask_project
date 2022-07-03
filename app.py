@@ -3,31 +3,26 @@ from flask import Flask, render_template, request, jsonify  # , redirect, url_fo
 from Libs.DataLib.json_helper import *
 from Libs.OSLib.os_helper import *
 
+
+########################################################################################################################
+# BEGIN - SHARED CODE SECTION  #########################################################################################
+
 # FLASK APP
 app = Flask(__name__)
-
 # APP DATA - TAKEN FROM YAML FILE
 app_config = get_yaml_config(os.path.join(os.getcwd(), "docker-compose.yml"))
-
-# NAME CONSTANTS
-BASE_TITLE = app_config['app_title']
-APP_NAME = app_config['app_name']
-
+# NAME CONSTANTS - CHECK 'docker-compose.yml' TO CHANGE APP_NAME
+BASE_TITLE = "Base Flask Project"
+APP_NAME = app_config['services']['app']['container_name']
+# STANDARD APP DATA LOCATION
 app_data = StandardAppDirStruct(os.getcwd(), APP_NAME)
+
+# END - SHARED CODE SECTION  ###########################################################################################
+########################################################################################################################
+
 # JSON
 users_json = JsonManager(os.path.join(app_data.data_dir, 'users.json'))
 user_list_data = users_json.import_data()
-
-# user_list_data = [
-#     {
-#         'name': 'Casey',
-#         'phone_number': '817-253-8694',
-#     },
-#     {
-#         'name': 'Natalie',
-#         'phone_number': '111-222-3333',
-#     }
-# ]
 
 
 @app.route('/', methods=['GET', 'POST'])
