@@ -2,8 +2,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/flask,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=flask,python
 
-### PROJECT SPECIFIC ###
-data_parking_login_web/
+### BASE FLASK PROJECT RELATED DIRECTORES ##############################################################################
+# MUST MATCH DIRECTORY NAME FROM '.dockerignore' AND 'docker-compose.yml'
+data_base_flask_project/
+### END BASE FLASK PROJECT RELATED DIRECTORES ##########################################################################
 
 ### Flask ###
 instance/*
